@@ -1,2 +1,2 @@
 # ad-assignment
-Fork of my submission for Bournemouth University's Advanced Development assignment module. 
+A fork of my submission for BU's Advanced Development assignment.
