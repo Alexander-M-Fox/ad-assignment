@@ -1,0 +1,27 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        <h1 class="mb-4 text-center">Your orders</h1>
+
+        {% if hasOrders %}
+        {% for order, user in orderInfo %}
+
+        <div class="d-flex flex-row justify-content-around mb-3">
+            <a class=" px-5 btn btn-outline-primary d-flex flex-row bd-highlight justify-content-around mb-3 text-reset col-10 mx-1"
+                href="">
+                <div class="p-2">{{ order['productName'] }}</div>
+                <div class="p-2 ">£{{ order['price'] }}</div>
+                <div class="p-2 ">Order status: <b>{{user['status']}}</b></div>
+            </a>
+            <a href=""
+                class="btn btn-danger px-5 d-flex flex-row bd-highlight justify-content-around mb-3 col-2 mx-1">Cancel
+                Order</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>You do not have any orders yet.</p>
+        {% endif %}
+    </div>

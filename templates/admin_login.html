@@ -1,0 +1,27 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='firebase_admin.js') }}" async defer></script>
+    <script src="{{ url_for('static', filename='create_admin_account.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        <h1 class="pb-3 text-center">Administrator Login Below</h1>
+        <div id="firebaseui-auth-container"></div>
+        <button id="sign-out" class="btn btn-outline-primary" hidden=true>Sign Out</button>
+
+        <h1 class="pt-5 pb-3 text-center">Register Admin Account</h1>
+        <div class="d-flex justify-content-center">
+            <form action="/" method="post">
+                <div class="form-group">
+                    <label for="usr">Email</label><br>
+                    <input class="form-control" type="text" id="ca_email" name="email" style="width: 300px">
+                </div>
+                <div class="form-group mb-1">
+                    <label for="pwd">Password</label><br>
+                    <input class="form-control" type="password" id="ca_pwd" name="pwd" style="width: 300px"><br />
+                </div>
+                <a class="btn btn-primary mb-5 text-white" id="create-admin-account-submit">Submit</a>
+            </form>
+        </div>
+    </div>
+    {% include 'script.html' %}

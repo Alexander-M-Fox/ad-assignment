@@ -1,0 +1,70 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    <script src="{{ url_for('static', filename='productButton.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        {% if not productInfo %}
+        <p>product not found</p>
+        {% else %}
+        <p><b id="error"></b></p>
+        <h1 class="mb-4">{{productInfo['productName']}}</h1>
+        <div class="row">
+            <div class="col-md-4 mb-3" style="max-width: 500px">
+                <img src="{{ productInfo['imageUrl'] }}"
+                    class="card-image-top rounded mx-auto d-block detailsProductImg">
+            </div>
+            <div class="col-md-8 mb-3">
+                <div class="row pb-2 d-flex align-items-center">
+                    <h3 class="mx-3 align-middle">£{{ productInfo['price'] }}</h3>
+                    {% if session['user'] %}
+                    {% if session['user']['name'] %}
+                    <!-- non-admin user logged in -->
+                    <a class="btn btn btn-outline-warning m-2" id="buy-now">Buy now</a>
+                    {% else %}
+                    <a class="btn btn btn-outline-primary m-2" id="edit-product">Edit product</a>
+                    {% endif %}
+                    {% else %}
+                    <a class="btn btn btn-outline-primary m-2" href="{{url_for('login')}}">Log in</a>
+                    <span class="">to purchase</span>
+                    {% endif %}
+                </div>
+                {% include 'lorum.html' %}
+            </div>
+        </div>
+
+        {% if reviewInfo %}
+        <!-- <p><b>{{ reviewInfo['productID'] }}</b></p> -->
+        <div class="">
+            <h1>
+                Average Rating: {{ averageRating }}
+                <i class="fa fa-star-o" style="font-size:48px"></i>
+            </h1>
+        </div>
+
+        <div class="row">
+            {% for review in reviewInfo %}
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-0">{{ review['Rating'] }} - {{ review['Title'] }}</h2>
+                        <p class="card-text">{{ review['Description'] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-0">4 - Not bad</h2>
+                        <p class="card-text"><i>username of reviewer</i></p>
+                        <p class="card-text">Not the best material but it does what it is meant to do</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% include 'script.html' %}

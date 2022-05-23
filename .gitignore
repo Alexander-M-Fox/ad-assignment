@@ -1,0 +1,12 @@
+.idea
+client_secret_*
+__pycache__/*
+venv
+venv/*
+.vscode
+.vscode/*
+.vscode/settings.json
+
+# additional security
+ad-lab-wb-21-10-04-51bba8aad6df.json
+secrets.py

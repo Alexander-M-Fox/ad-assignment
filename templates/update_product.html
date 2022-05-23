@@ -1,0 +1,32 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+
+    <h1 class="pt-5 pb-3 text-center">Update product in db</h1>
+    <div class="d-flex justify-content-center">
+        <form action="/admin/updateProduct/{{ id }}" method="post">
+            <div class="form-group">
+                <label for="usr">Image URL</label><br>
+                <input class="form-control" type="text" id="ap_url" name="url" style="width: 300px"
+                    value="{{ product['imageUrl'] }}">
+            </div>
+            <div class="form-group mb-1">
+                <label for="pwd">Price</label><br>
+                <input class="form-control" type="text" id="ap_price" name="price" style="width: 300px"
+                    value="{{ product['price'] }}"><br />
+            </div>
+            <div class="form-group mb-1">
+                <label for="pwd">Product Name</label><br>
+                <input class="form-control" type="text" id="ap_name" name="name" style="width: 300px"
+                    value="{{ product['productName'] }}"><br />
+            </div>
+            <div class="form-group mb-1">
+                <label for="pwd">Quantity</label><br>
+                <input class="form-control" type="number" id="ap_quantity" name="quantity" style="width: 300px"
+                    value="{{ product['quantity'] }}"><br />
+            </div>
+            <button class="btn btn-primary mb-5 text-white" id="ap_submit" type="submit">Submit</button>
+        </form>
+    </div>

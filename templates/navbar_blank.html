@@ -1,0 +1,33 @@
+<div class="navbar navbar-light bg-light">
+    <div class="ms-auto">
+        <a class="navbar-brand" href="{{url_for('index')}}">
+            <img src="{{url_for('static', filename='logo-transparent.png')}}" style="height: 70px" class="mr-3" />
+        </a>
+        <a class="text-reset h5 mr-5" href="{{url_for('index')}}">Home</a>
+        <a class="text-reset h5 mr-5" href="{{url_for('about')}}">About us</a>
+        {% if session['user'] %}
+        {% if session['user']['firebase']['sign_in_provider'] == "password" %}
+        <a class="text-reset h5" href="{{ url_for('admin') }}">Admin tools</a>
+        {% else %}
+        <a class="text-reset h5" href="{{ url_for('orders') }}">Your orders</a>
+        {% endif %}
+        {% endif %}
+    </div>
+    <div class="me-auto">
+        {% if session['user'] %}
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                {{ session['user']['email'] }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item">Your Account</a>
+                <a class="dropdown-item" id="sign-out">Sign Out</a>
+            </div>
+        </div>
+        {% else %}
+        <a class="btn btn-outline-primary my-2 mr-2" href="{{url_for('login')}}">Log in</a>
+        {% endif %}
+    </div>
+
+</div>

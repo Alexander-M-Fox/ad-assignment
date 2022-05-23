@@ -1,0 +1,43 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        <h1 class="mb-4">Top picks for you</h1>
+        <div class="row">
+            {% for id, product in topPicks %}
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a class="text-decoration-none text-reset" href="/product/{{id}}">
+                    <div class="card hoverable">
+                        <img src="{{product['imageUrl']}}" class="card-image-top rounded topProductImg">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product['productName'] }} - £{{ product['price'] }}</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <h1 class="mt-4 mb-3">Sale items</h1>
+        <div class="row">
+            {% for id, product in saleItems %}
+            <div class="col-lg-3 col-sm-4 mb-3">
+                <a class="text-decoration-none text-reset" href="/product/{{id}}">
+                    <div class="card mb-3 hoverable">
+                        <img src="{{product['imageUrl']}}" class="card-image-top rounded saleProductImg">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product['productName'] }} - £{{ product['price'] }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'script.html' %}

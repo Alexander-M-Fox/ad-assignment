@@ -1,0 +1,32 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='firebase_user.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        <!-- <div class="row">
+            <div class="col-6"> -->
+        <h1 class="pb-3 text-center">Login below</h1>
+        <div id="firebaseui-auth-container"></div>
+        <button id="sign-out" class="btn btn-outline-primary" hidden=true>Sign Out</button>
+        <!-- <h1 class="pt-5 pb-3">Admin login below</h1>
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label for="usr">Username</label><br>
+                        <input class="form-control" type="text" id="usr" name="usr" style="max-width: min(450px, 95%)">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label><br>
+                        <input class="form-control" type="password" id="pwd" name="pwd"
+                            style="max-width: min(450px, 95%)"><br />
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-5">Submit</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <h1 class="pb-3">No account?</h1>
+            </div> -->
+        <p class="mt-5 text-center">Log in as admin? <a href="{{ url_for('adminLogin') }}">Click here</a></p>
+    </div>
+    </div>
+    {% include 'script.html' %}

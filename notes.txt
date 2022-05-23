@@ -1,0 +1,9 @@
+Currently working on
+- get orders and accounts working with mongo
+    - I think firebase verification needs to happen on /signIn, not index.  Committing before trying
+- linking review and product kinds in datastore
+
+Data Persistance
+- product information in datastore
+- admin information in sql with logging table
+- customer and order information in mongodb

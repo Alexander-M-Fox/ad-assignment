@@ -1,0 +1,17 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+
+    <h1 class="pt-5 pb-3 text-center">Update order status</h1>
+    <div class="d-flex justify-content-center">
+        <form action="/admin/updateOrder/{{order['productId']}}/{{order['email']}}" method="post">
+            <div class="form-group">
+                <label for="usr">Change order status</label><br>
+                <input class="form-control" type="text" id="ap_url" name="status" style="width: 300px"
+                    value="{{ order['status'] }}">
+            </div>
+            <button class="btn btn-primary mb-5 text-white" id="ap_submit" type="submit">Submit</button>
+        </form>
+    </div>

@@ -1,0 +1,11 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+
+    <h1 class="pt-5 pb-3 text-center">Administrator options</h1>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary px-5 py-4 text-white m-2" href="{{ url_for('listProductsRoute') }}">Product List</a>
+        <a class="btn btn-primary px-5 py-4 text-white m-2" href="{{ url_for('adminOrderList') }}">Order List</a>
+    </div>

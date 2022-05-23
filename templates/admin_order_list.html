@@ -1,0 +1,23 @@
+{% include 'head.html' %}
+
+<body>
+    <script src="{{ url_for('static', filename='signout.js') }}" async defer></script>
+    {% include 'navbar_blank.html' %}
+    <div class="container-fluid pt-4 mr-3">
+        <h1 class="mb-4 text-center">Select an order to edit</h1>
+        {% for order in orders %}
+        <div class="d-flex flex-row justify-content-around mb-3">
+            <a class=" px-5 btn btn-outline-primary d-flex flex-row bd-highlight justify-content-around mb-3 text-reset col-10 mx-1"
+                href="/admin/orderDetails/{{order['productId']}}/{{order['email']}}">
+                <div class="p-2">{{ order['email'] }}</div>
+                <div class="p-2">{{ order['productName'] }}</div>
+                <div class="p-2 ">£{{ order['price'] }}</div>
+                <div class="p-2 ">Status: <b>{{ order['status'] }}</b></div>
+                <!-- <div class="p-2 ">{{ order['productId'] }}</div> -->
+            </a>
+            <a href="/admin/deleteOrder/{{order['productId']}}/{{order['email']}}"
+                class="btn btn-danger px-5 d-flex flex-row bd-highlight justify-content-around mb-3 col-2 mx-1">Delete
+                Order</a>
+        </div>
+        {% endfor %}
+    </div>
